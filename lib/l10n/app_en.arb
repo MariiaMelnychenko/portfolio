@@ -1,0 +1,12 @@
+{
+  "@@locale": "en",
+  "fullName": "Your Name Surname",
+  "flutterDeveloper": "Flutter Developer",
+  "yearsOfExperience": "3+ years of experience",
+  "skills": "Skills",
+  "apps": "Apps",
+  "details": "Details",
+  "downloadResume": "Download Resume",
+  "linkedIn": "LinkedIn",
+  "gitHub": "GitHub"
+}

@@ -1,0 +1,12 @@
+{
+  "@@locale": "uk",
+  "fullName": "Ім'я Прізвище",
+  "flutterDeveloper": "Flutter-розробник",
+  "yearsOfExperience": "3+ роки досвіду",
+  "skills": "Навички",
+  "apps": "Додатки",
+  "details": "Деталі",
+  "downloadResume": "Завантажити резюме",
+  "linkedIn": "LinkedIn",
+  "gitHub": "GitHub"
+}
