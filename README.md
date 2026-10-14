@@ -33,4 +33,4 @@ Check out the live version of the portfolio here:
 
 **Mariia Melnychenko**
 * Middle Flutter Developer
-* [LinkedIn](https://www.linkedin.com/in/your-profile) | [GitHub](https://github.com/your-username)
+* [LinkedIn](https://www.linkedin.com/in/mariia-melnychenko-27686b2bb) | [GitHub](https://github.com/MariiaMelnychenko)
