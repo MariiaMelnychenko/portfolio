@@ -1,4 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../apps/data/apps_repository.dart';
+import '../../../apps/domain/app_item.dart';
 
 sealed class HomeState {
   const HomeState();
@@ -13,7 +17,9 @@ final class HomeLoading extends HomeState {
 }
 
 final class HomeLoaded extends HomeState {
-  const HomeLoaded();
+  const HomeLoaded({required this.apps});
+
+  final List<AppItem> apps;
 }
 
 final class HomeError extends HomeState {
@@ -23,10 +29,18 @@ final class HomeError extends HomeState {
 }
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(const HomeInitial());
+  HomeCubit(this._appsRepository) : super(const HomeInitial());
+
+  final AppsRepository _appsRepository;
 
   Future<void> load() async {
     emit(const HomeLoading());
-    emit(const HomeLoaded());
+    try {
+      final apps = await _appsRepository.fetchApps(limit: 8);
+      emit(HomeLoaded(apps: apps));
+    } catch (error, stackTrace) {
+      debugPrint('HomeCubit.load failed: $error\n$stackTrace');
+      emit(HomeError(error.toString()));
+    }
   }
 }

@@ -10,8 +10,8 @@ void main() {
     configureDependencies();
   });
 
-  testWidgets('renders MainPage', (WidgetTester tester) async {
+  testWidgets('renders PortfolioApp', (WidgetTester tester) async {
     await tester.pumpWidget(const PortfolioApp());
-    expect(find.text('Flutter Developer'), findsOneWidget);
+    expect(find.byType(PortfolioApp), findsOneWidget);
   });
 }
