@@ -4,11 +4,6 @@
 
 A professional, interactive mobile and web portfolio showcasing my experience, projects, and technical skills as a Middle Flutter Developer. Built with scalability, clean code principles, and modern UI/UX design.
 
-## 🌐 Live Demo
-
-Check out the live version of the portfolio here: 
-**[https://your-username.github.io/portfolio/](https://your-username.github.io/portfolio/)**
-
 ## ✨ Features
 
 * **Custom Neomorphic UI:** A highly polished, responsive interface with custom interactive containers and smooth animations.

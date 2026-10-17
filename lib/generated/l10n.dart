@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+
 import 'intl/messages_all.dart';
 
 // **************************************************************************
@@ -79,10 +80,10 @@ class S {
     );
   }
 
-  /// `3.7 years of experience`
+  /// `3+ years of experience`
   String get yearsOfExperience {
     return Intl.message(
-      '3.7 years of experience',
+      '3+ years of experience',
       name: 'yearsOfExperience',
       desc: '',
       args: [],

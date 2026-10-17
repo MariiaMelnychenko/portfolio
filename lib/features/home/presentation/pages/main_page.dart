@@ -29,34 +29,49 @@ class MainPage extends StatelessWidget {
               HomeError() => LoadErrorView(
                 onRetry: () => context.read<HomeCubit>().load(),
               ),
-              HomeLoaded(:final apps) => SingleChildScrollView(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          l10n.portfolio,
-                          style: TextStyle(
-                            fontSize: 26,
-                            fontWeight: FontWeight.w700,
+              HomeLoaded(:final apps) => LayoutBuilder(
+                builder: (context, constraints) {
+                  return SingleChildScrollView(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight: constraints.maxHeight,
+                      ),
+                      child: IntrinsicHeight(
+                        child: Padding(
+                          padding: const EdgeInsets.all(16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    l10n.portfolio,
+                                    style: const TextStyle(
+                                      fontSize: 26,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  const LanguageSwitch(),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              HeaderModule(l10n: l10n),
+                              const SizedBox(height: 28),
+                              SkillsModule(l10n: l10n, skills: AppSkills.all),
+                              const SizedBox(height: 28),
+                              AppsModule(l10n: l10n, apps: apps),
+                              const Spacer(),
+                              const SizedBox(height: 32),
+                              MainButtons(l10n: l10n),
+                            ],
                           ),
                         ),
-                        LanguageSwitch(),
-                      ],
+                      ),
                     ),
-                    const SizedBox(height: 10),
-                    HeaderModule(l10n: l10n),
-                    const SizedBox(height: 28),
-                    SkillsModule(l10n: l10n, skills: AppSkills.all),
-                    const SizedBox(height: 28),
-                    AppsModule(l10n: l10n, apps: apps),
-                    const SizedBox(height: 32),
-                    MainButtons(l10n: l10n),
-                  ],
-                ),
+                  );
+                },
               ),
             };
           },

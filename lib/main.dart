@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -23,6 +24,15 @@ Future<void> main() async {
   runApp(const PortfolioApp());
 }
 
+class MouseDragScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+    PointerDeviceKind.trackpad,
+  };
+}
+
 class PortfolioApp extends StatelessWidget {
   const PortfolioApp({super.key});
 
@@ -35,12 +45,14 @@ class PortfolioApp extends StatelessWidget {
           return MaterialApp.router(
             onGenerateTitle: (context) => S.of(context).fullName,
             theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: AppColors.yellow),
-              scaffoldBackgroundColor: AppColors.white,
+              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+              scaffoldBackgroundColor: AppColors.bg,
             ),
             locale: locale,
             supportedLocales: S.delegate.supportedLocales,
             debugShowCheckedModeBanner: false,
+            scrollBehavior: MouseDragScrollBehavior(),
+
             localizationsDelegates: const [
               S.delegate,
               GlobalMaterialLocalizations.delegate,
@@ -48,16 +60,31 @@ class PortfolioApp extends StatelessWidget {
               GlobalCupertinoLocalizations.delegate,
             ],
             routerConfig: appRouter,
-
             builder: (context, child) {
+              if (!kIsWeb) return child!;
               return Container(
-                color: Colors.grey[200],
+                color: AppColors.grey,
                 child: Center(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(kIsWeb ? 16.0 : 0.0),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 450),
-                      child: child,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: AppColors.black.withValues(alpha: 0.1),
+                          blurRadius: 20,
+                          spreadRadius: 5,
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(24.0),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(24.0),
+                      child: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          maxWidth: 400,
+                          maxHeight: 800,
+                        ),
+                        child: child,
+                      ),
                     ),
                   ),
                 ),

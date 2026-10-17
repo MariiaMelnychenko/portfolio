@@ -77,7 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "skills": MessageLookupByLibrary.simpleMessage("Skills"),
     "techStack": MessageLookupByLibrary.simpleMessage("Tech stack"),
     "yearsOfExperience": MessageLookupByLibrary.simpleMessage(
-      "3.7 years of experience",
+      "3+ years of experience",
     ),
   };
 }
